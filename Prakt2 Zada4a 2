@@ -1,0 +1,185 @@
+using System; 
+
+  
+
+namespace SortingArrays 
+
+{ 
+
+    class Program 
+
+    { 
+
+        static void Main(string[] args) 
+
+        { 
+
+            // Create an array of 30 integers 
+
+            int[] arr = new int[30]; 
+
+  
+
+            // Fill the array with random numbers between 1 and 100 
+
+            Random rand = new Random(); 
+
+            for (int i = 0; i < arr.Length; i++) 
+
+            { 
+
+                arr[i] = rand.Next(1, 101); 
+
+            } 
+
+  
+
+            // Sort the array using the Bubble Sort algorithm 
+
+            BubbleSort(arr); 
+
+  
+
+            // Print the sorted array 
+
+            Console.WriteLine("Sorted array using Bubble Sort:"); 
+
+            PrintArray(arr); 
+
+  
+
+            // Sort the array using the Insertion Sort algorithm 
+
+            InsertionSort(arr); 
+
+  
+
+            // Print the sorted array 
+
+            Console.WriteLine("Sorted array using Insertion Sort:"); 
+
+            PrintArray(arr); 
+
+        } 
+
+  
+
+        /// <summary> 
+
+        /// Sorts an array of integers using the Bubble Sort algorithm 
+
+        /// </summary> 
+
+        /// <param name="arr">The array to be sorted</param> 
+
+        static void BubbleSort(int[] arr) 
+
+        { 
+
+            int n = arr.Length; 
+
+            for (int i = 0; i < n - 1; i++) 
+
+            { 
+
+                for (int j = 0; j < n - i - 1; j++) 
+
+                { 
+
+                    if (arr[j] > arr[j + 1]) 
+
+                    { 
+
+                        // Swap arr[j] and arr[j+1] 
+
+                        int temp = arr[j]; 
+
+                        arr[j] = arr[j + 1]; 
+
+                        arr[j + 1] = temp; 
+
+                    } 
+
+                } 
+
+            } 
+
+        } 
+
+  
+
+        /// <summary> 
+
+        /// Sorts an array of integers using the Insertion Sort algorithm 
+
+        /// </summary> 
+
+        /// <param name="arr">The array to be sorted</param> 
+
+        static void InsertionSort(int[] arr) 
+
+        { 
+
+            int n = arr.Length; 
+
+            for (int i = 1; i < n; ++i) 
+
+            { 
+
+                int key = arr[i]; 
+
+                int j = i - 1; 
+
+  
+
+                /* Move elements of arr[0..i-1], that are 
+
+                   greater than key, to one position ahead 
+
+                   of their current position */ 
+
+                while (j >= 0 && arr[j] > key) 
+
+                { 
+
+                    arr[j + 1] = arr[j]; 
+
+                    j = j - 1; 
+
+                } 
+
+                arr[j + 1] = key; 
+
+            } 
+
+        } 
+
+  
+
+        /// <summary> 
+
+        /// Prints the elements of an array of integers 
+
+        /// </summary> 
+
+        /// <param name="arr">The array to be printed</param> 
+
+        static void PrintArray(int[] arr) 
+
+        { 
+
+            foreach (int num in arr) 
+
+            { 
+
+                Console.Write(num + " "); 
+
+            } 
+
+            Console.WriteLine(); 
+
+        } 
+
+    } 
+
+} 
